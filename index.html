@@ -1,183 +1,217 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Plataforma CALMA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Plataforma CALMA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f7fb;
-      color: #1f2d3d;
-    }
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#f4f7fb;
+color:#1f2d3d;
+}
 
-    nav {
-      background:#082f6b;
-      padding:15px;
-      text-align:center;
-      position:sticky;
-      top:0;
-    }
+nav{
+background:#082f6b;
+padding:15px;
+text-align:center;
+position:sticky;
+top:0;
+}
 
-    nav a {
-      color:white;
-      margin:0 15px;
-      text-decoration:none;
-      font-weight:bold;
-    }
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+}
 
-    header {
-      background-color: #0b3d91;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
+header{
+background:#0b3d91;
+color:white;
+padding:40px 20px;
+text-align:center;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 40px;
-    }
+section{
+padding:40px 20px;
+max-width:1000px;
+margin:auto;
+}
 
-    header p {
-      font-size: 18px;
-      margin-top: 10px;
-    }
+h2{
+color:#0b3d91;
+}
 
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+.card{
+background:white;
+padding:20px;
+margin:20px 0;
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
 
-    h2 {
-      color: #0b3d91;
-    }
+input{
+padding:8px;
+margin:5px 0 15px 0;
+width:100%;
+max-width:300px;
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
+button{
+background:#0b3d91;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
 
-    .resultado {
-      font-size:18px;
-      font-weight:bold;
-      margin-top:15px;
-    }
+.resultado{
+font-size:20px;
+font-weight:bold;
+margin-top:15px;
+}
 
-    footer {
-      background-color: #0b3d91;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
+.bajo{color:green;}
+.medio{color:orange;}
+.alto{color:red;}
 
-    button {
-      background:#0b3d91;
-      color:white;
-      padding:10px 20px;
-      border:none;
-      border-radius:5px;
-      cursor:pointer;
-      margin-top:10px;
-    }
-
-    input {
-      padding:8px;
-      margin:5px 0;
-      width:100%;
-      max-width:300px;
-    }
-  </style>
+footer{
+background:#0b3d91;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+</style>
 </head>
 
 <body>
 
 <nav>
-  <a href="#">Inicio</a>
-  <a href="#evaluacion">Evaluación</a>
-  <a href="#investigacion">Investigación</a>
+<a href="#">Inicio</a>
+<a href="#evaluacion">Evaluación</a>
+<a href="#educacion">Bienestar</a>
+<a href="#orientacion">Orientación</a>
 </nav>
 
 <header>
-  <h1>PLATAFORMA CALMA</h1>
-  <p>Modelo predictivo interdisciplinario basado en IA para la prevención del burnout académico.</p>
+<h1>PLATAFORMA CALMA</h1>
+<p>Sistema predictivo interdisciplinario para prevención primaria del burnout académico.</p>
 </header>
 
-<section>
-  <h2>¿Qué es CALMA?</h2>
-  <div class="card">
-    CALMA es una plataforma científica diseñada para identificar factores de riesgo tempranos asociados al burnout académico,
-    integrando variables psicológicas y académicas mediante modelos predictivos.
-  </div>
-</section>
-
 <section id="evaluacion">
-  <h2>Evaluación Predictiva</h2>
-  <div class="card">
-    <label>Carga académica (1-10)</label><br>
-    <input type="number" id="carga" min="1" max="10"><br>
+<h2>Evaluación Predictiva Tendencial</h2>
+<div class="card">
 
-    <label>Horas de sueño promedio</label><br>
-    <input type="number" id="sueno" min="1" max="10"><br>
+<p>Responde según tu situación actual.</p>
 
-    <label>Nivel de estrés percibido (1-10)</label><br>
-    <input type="number" id="estres" min="1" max="10"><br>
+<label>Carga académica (1-10)</label>
+<input type="number" id="carga" min="1" max="10">
 
-    <button onclick="calcularRiesgo()">Calcular Riesgo</button>
+<label>Horas de sueño promedio</label>
+<input type="number" id="sueno" min="1" max="10">
 
-    <div class="resultado" id="resultado"></div>
-  </div>
+<label>Estrés percibido (1-10)</label>
+<input type="number" id="estres" min="1" max="10">
+
+<label>Fatiga emocional (1-5)</label>
+<input type="number" id="fatiga" min="1" max="5">
+
+<label>Motivación académica (1-5)</label>
+<input type="number" id="motivacion" min="1" max="5">
+
+<label>Apoyo social percibido (1-5)</label>
+<input type="number" id="apoyo" min="1" max="5">
+
+<button onclick="calcularRiesgo()">Calcular Nivel de Riesgo</button>
+
+<div class="resultado" id="resultado"></div>
+<div id="probabilidad"></div>
+<div id="recomendaciones"></div>
+
+</div>
 </section>
 
-<section id="investigacion">
-  <h2>Líneas de Investigación</h2>
-  <div class="card">
-    <ul>
-      <li>Análisis predictivo basado en datos académicos</li>
-      <li>Modelado estadístico interdisciplinario</li>
-      <li>Evaluación de riesgo psicoeducativo</li>
-      <li>Diseño de intervención preventiva</li>
-    </ul>
-  </div>
+<section id="educacion">
+<h2>Bienestar Académico</h2>
+<div class="card">
+<ul>
+<li>✔ Organiza 3 prioridades diarias</li>
+<li>✔ Técnica 25/5 (Pomodoro)</li>
+<li>✔ 7–8 horas de sueño</li>
+<li>✔ Pausas activas cada 90 minutos</li>
+<li>✔ Revisión semanal de carga académica</li>
+</ul>
+</div>
+</section>
+
+<section id="orientacion">
+<h2>Orientación Profesional</h2>
+<div class="card">
+<p id="derivacion"></p>
+</div>
 </section>
 
 <footer>
-  © 2026 Plataforma CALMA | Investigación doctoral
+© 2026 Plataforma CALMA | Investigación doctoral
 </footer>
 
 <script>
 function calcularRiesgo(){
 
-    let carga = parseFloat(document.getElementById("carga").value);
-    let sueno = parseFloat(document.getElementById("sueno").value);
-    let estres = parseFloat(document.getElementById("estres").value);
+let carga = parseFloat(document.getElementById("carga").value);
+let sueno = parseFloat(document.getElementById("sueno").value);
+let estres = parseFloat(document.getElementById("estres").value);
+let fatiga = parseFloat(document.getElementById("fatiga").value);
+let motivacion = parseFloat(document.getElementById("motivacion").value);
+let apoyo = parseFloat(document.getElementById("apoyo").value);
 
-    if(isNaN(carga) || isNaN(sueno) || isNaN(estres)){
-        document.getElementById("resultado").innerHTML = "Complete todos los campos.";
-        return;
-    }
+if([carga,sueno,estres,fatiga,motivacion,apoyo].some(isNaN)){
+document.getElementById("resultado").innerHTML="Complete todos los campos.";
+return;
+}
 
-    let score = (carga * 0.4) +
-                ((10 - sueno) * 0.3) +
-                (estres * 0.3);
+let score =
+(carga*0.25)+
+((10-sueno)*0.20)+
+(estres*0.20)+
+(fatiga*0.15)+
+((5-motivacion)*0.10)+
+((5-apoyo)*0.10);
 
-    let mensaje = "";
+let prob = Math.min(100, Math.round((score/10)*100));
 
-    if(score >= 7){
-        mensaje = "RIESGO ALTO de Burnout Académico";
-    } else if(score >= 4){
-        mensaje = "RIESGO MEDIO de Burnout Académico";
-    } else {
-        mensaje = "RIESGO BAJO de Burnout Académico";
-    }
+let resultado = document.getElementById("resultado");
+let recomendaciones = "";
+let derivacion = "";
 
-    document.getElementById("resultado").innerHTML = mensaje;
+if(score>=7){
+resultado.innerHTML="🔴 RIESGO ALTO";
+resultado.className="resultado alto";
+derivacion="Te recomendamos buscar apoyo profesional en los servicios psicológicos de tu universidad o redes de apoyo.";
+recomendaciones="Prioriza reducción de carga, higiene del sueño, regulación emocional y asesoría académica inmediata.";
+}
+else if(score>=4){
+resultado.innerHTML="🟡 RIESGO MEDIO";
+resultado.className="resultado medio";
+derivacion="Fortalece organización del tiempo y estrategias de estudio.";
+recomendaciones="Implementa pausas activas, planificación semanal y técnicas estructuradas de estudio.";
+}
+else{
+resultado.innerHTML="🟢 RIESGO BAJO";
+resultado.className="resultado bajo";
+derivacion="Mantén hábitos saludables y monitorea tu bienestar académico.";
+recomendaciones="Continúa fortaleciendo motivación, sueño regular y equilibrio académico.";
+}
+
+document.getElementById("probabilidad").innerHTML="Probabilidad estimada: "+prob+"%";
+document.getElementById("recomendaciones").innerHTML="<br><strong>Recomendaciones:</strong><br>"+recomendaciones;
+document.getElementById("derivacion").innerHTML=derivacion;
+
 }
 </script>
 
