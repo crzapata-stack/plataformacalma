@@ -9,7 +9,7 @@
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:#f4f7fb;
+background:#eef2f7;
 color:#1f2d3d;
 }
 
@@ -17,8 +17,6 @@ nav{
 background:#082f6b;
 padding:15px;
 text-align:center;
-position:sticky;
-top:0;
 }
 
 nav a{
@@ -31,12 +29,12 @@ font-weight:bold;
 header{
 background:#0b3d91;
 color:white;
-padding:40px 20px;
+padding:50px 20px;
 text-align:center;
 }
 
 section{
-padding:40px 20px;
+padding:50px 20px;
 max-width:1000px;
 margin:auto;
 }
@@ -47,37 +45,58 @@ color:#0b3d91;
 
 .card{
 background:white;
-padding:20px;
-margin:20px 0;
-border-radius:8px;
-box-shadow:0 4px 10px rgba(0,0,0,0.05);
+padding:25px;
+margin:25px 0;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.06);
 }
 
 input{
-padding:8px;
+padding:10px;
 margin:5px 0 15px 0;
 width:100%;
-max-width:300px;
+max-width:350px;
+border-radius:6px;
+border:1px solid #ccc;
 }
 
 button{
 background:#0b3d91;
 color:white;
-padding:10px 20px;
+padding:12px 25px;
 border:none;
-border-radius:5px;
+border-radius:6px;
 cursor:pointer;
-}
-
-.resultado{
-font-size:20px;
 font-weight:bold;
-margin-top:15px;
 }
 
-.bajo{color:green;}
-.medio{color:orange;}
-.alto{color:red;}
+button:hover{
+background:#082f6b;
+}
+
+.resultado-box{
+margin-top:20px;
+padding:20px;
+border-radius:10px;
+font-weight:bold;
+font-size:18px;
+}
+
+.bajo{background:#e6f9ec;color:#0a7a2f;}
+.medio{background:#fff4e5;color:#b36b00;}
+.alto{background:#fde8e8;color:#b30000;}
+
+.barra{
+height:15px;
+border-radius:8px;
+margin-top:10px;
+background:#ddd;
+overflow:hidden;
+}
+
+.barra-interna{
+height:100%;
+}
 
 footer{
 background:#0b3d91;
@@ -94,20 +113,25 @@ margin-top:40px;
 <nav>
 <a href="#">Inicio</a>
 <a href="#evaluacion">Evaluación</a>
-<a href="#educacion">Bienestar</a>
-<a href="#orientacion">Orientación</a>
+<a href="#investigacion">Investigación</a>
 </nav>
 
 <header>
 <h1>PLATAFORMA CALMA</h1>
-<p>Sistema predictivo interdisciplinario para prevención primaria del burnout académico.</p>
+<p>Modelo predictivo interdisciplinario basado en IA para la prevención del burnout académico.</p>
 </header>
 
-<section id="evaluacion">
-<h2>Evaluación Predictiva Tendencial</h2>
+<section>
+<h2>¿Qué es CALMA?</h2>
 <div class="card">
+CALMA es una plataforma científica diseñada para identificar factores de riesgo tempranos asociados al burnout académico,
+integrando variables psicológicas y académicas mediante modelos predictivos.
+</div>
+</section>
 
-<p>Responde según tu situación actual.</p>
+<section id="evaluacion">
+<h2>Evaluación Predictiva</h2>
+<div class="card">
 
 <label>Carga académica (1-10)</label>
 <input type="number" id="carga" min="1" max="10">
@@ -115,44 +139,13 @@ margin-top:40px;
 <label>Horas de sueño promedio</label>
 <input type="number" id="sueno" min="1" max="10">
 
-<label>Estrés percibido (1-10)</label>
+<label>Nivel de estrés percibido (1-10)</label>
 <input type="number" id="estres" min="1" max="10">
 
-<label>Fatiga emocional (1-5)</label>
-<input type="number" id="fatiga" min="1" max="5">
+<button onclick="calcularRiesgo()">Calcular Riesgo</button>
 
-<label>Motivación académica (1-5)</label>
-<input type="number" id="motivacion" min="1" max="5">
+<div id="resultado"></div>
 
-<label>Apoyo social percibido (1-5)</label>
-<input type="number" id="apoyo" min="1" max="5">
-
-<button onclick="calcularRiesgo()">Calcular Nivel de Riesgo</button>
-
-<div class="resultado" id="resultado"></div>
-<div id="probabilidad"></div>
-<div id="recomendaciones"></div>
-
-</div>
-</section>
-
-<section id="educacion">
-<h2>Bienestar Académico</h2>
-<div class="card">
-<ul>
-<li>✔ Organiza 3 prioridades diarias</li>
-<li>✔ Técnica 25/5 (Pomodoro)</li>
-<li>✔ 7–8 horas de sueño</li>
-<li>✔ Pausas activas cada 90 minutos</li>
-<li>✔ Revisión semanal de carga académica</li>
-</ul>
-</div>
-</section>
-
-<section id="orientacion">
-<h2>Orientación Profesional</h2>
-<div class="card">
-<p id="derivacion"></p>
 </div>
 </section>
 
@@ -166,52 +159,47 @@ function calcularRiesgo(){
 let carga = parseFloat(document.getElementById("carga").value);
 let sueno = parseFloat(document.getElementById("sueno").value);
 let estres = parseFloat(document.getElementById("estres").value);
-let fatiga = parseFloat(document.getElementById("fatiga").value);
-let motivacion = parseFloat(document.getElementById("motivacion").value);
-let apoyo = parseFloat(document.getElementById("apoyo").value);
 
-if([carga,sueno,estres,fatiga,motivacion,apoyo].some(isNaN)){
+if([carga,sueno,estres].some(isNaN)){
 document.getElementById("resultado").innerHTML="Complete todos los campos.";
 return;
 }
 
 let score =
-(carga*0.25)+
-((10-sueno)*0.20)+
-(estres*0.20)+
-(fatiga*0.15)+
-((5-motivacion)*0.10)+
-((5-apoyo)*0.10);
+(carga*0.4)+
+((10-sueno)*0.3)+
+(estres*0.3);
 
 let prob = Math.min(100, Math.round((score/10)*100));
 
-let resultado = document.getElementById("resultado");
-let recomendaciones = "";
-let derivacion = "";
+let nivel="";
+let clase="";
+let colorBarra="";
 
 if(score>=7){
-resultado.innerHTML="🔴 RIESGO ALTO";
-resultado.className="resultado alto";
-derivacion="Te recomendamos buscar apoyo profesional en los servicios psicológicos de tu universidad o redes de apoyo.";
-recomendaciones="Prioriza reducción de carga, higiene del sueño, regulación emocional y asesoría académica inmediata.";
+nivel="🔴 RIESGO ALTO";
+clase="alto";
+colorBarra="#e53935";
 }
 else if(score>=4){
-resultado.innerHTML="🟡 RIESGO MEDIO";
-resultado.className="resultado medio";
-derivacion="Fortalece organización del tiempo y estrategias de estudio.";
-recomendaciones="Implementa pausas activas, planificación semanal y técnicas estructuradas de estudio.";
+nivel="🟡 RIESGO MEDIO";
+clase="medio";
+colorBarra="#fb8c00";
 }
 else{
-resultado.innerHTML="🟢 RIESGO BAJO";
-resultado.className="resultado bajo";
-derivacion="Mantén hábitos saludables y monitorea tu bienestar académico.";
-recomendaciones="Continúa fortaleciendo motivación, sueño regular y equilibrio académico.";
+nivel="🟢 RIESGO BAJO";
+clase="bajo";
+colorBarra="#43a047";
 }
 
-document.getElementById("probabilidad").innerHTML="Probabilidad estimada: "+prob+"%";
-document.getElementById("recomendaciones").innerHTML="<br><strong>Recomendaciones:</strong><br>"+recomendaciones;
-document.getElementById("derivacion").innerHTML=derivacion;
-
+document.getElementById("resultado").innerHTML=
+`<div class="resultado-box ${clase}">
+${nivel}<br>
+Probabilidad estimada: ${prob}%
+<div class="barra">
+<div class="barra-interna" style="width:${prob}%; background:${colorBarra};"></div>
+</div>
+</div>`;
 }
 </script>
 
