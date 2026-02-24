@@ -9,7 +9,7 @@
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:#eef2f7;
+background:#f4f7fb;
 color:#1f2d3d;
 }
 
@@ -17,6 +17,8 @@ nav{
 background:#082f6b;
 padding:15px;
 text-align:center;
+position:sticky;
+top:0;
 }
 
 nav a{
@@ -29,80 +31,54 @@ font-weight:bold;
 header{
 background:#0b3d91;
 color:white;
-padding:50px 20px;
+padding:60px 20px;
 text-align:center;
 }
 
 section{
-padding:50px 20px;
+padding:60px 20px;
 max-width:1000px;
 margin:auto;
 }
 
 h2{
 color:#0b3d91;
+margin-bottom:20px;
 }
 
 .card{
 background:white;
 padding:25px;
 margin:25px 0;
-border-radius:12px;
-box-shadow:0 8px 20px rgba(0,0,0,0.06);
-}
-
-input{
-padding:10px;
-margin:5px 0 15px 0;
-width:100%;
-max-width:350px;
-border-radius:6px;
-border:1px solid #ccc;
-}
-
-button{
-background:#0b3d91;
-color:white;
-padding:12px 25px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-font-weight:bold;
-}
-
-button:hover{
-background:#082f6b;
-}
-
-.resultado-box{
-margin-top:20px;
-padding:20px;
 border-radius:10px;
-font-weight:bold;
-font-size:18px;
+box-shadow:0 6px 18px rgba(0,0,0,0.06);
 }
 
-.bajo{background:#e6f9ec;color:#0a7a2f;}
-.medio{background:#fff4e5;color:#b36b00;}
-.alto{background:#fde8e8;color:#b30000;}
+ul{
+line-height:1.8;
+}
 
-.barra{
-height:15px;
+.frase{
+font-style:italic;
+background:#eef3ff;
+padding:15px;
+border-left:5px solid #0b3d91;
+margin-top:20px;
+}
+
+.alerta{
+background:#fde8e8;
+color:#b30000;
+padding:20px;
 border-radius:8px;
-margin-top:10px;
-background:#ddd;
-overflow:hidden;
-}
-
-.barra-interna{
-height:100%;
+font-weight:bold;
 }
 
 footer{
 background:#0b3d91;
 color:white;
 text-align:center;
-padding:20px;
+padding:25px;
 margin-top:40px;
 }
 </style>
@@ -112,96 +88,119 @@ margin-top:40px;
 
 <nav>
 <a href="#">Inicio</a>
-<a href="#evaluacion">Evaluación</a>
-<a href="#investigacion">Investigación</a>
+<a href="#autopercepcion">Autopercepción</a>
+<a href="#estrategias">Estrategias</a>
+<a href="#bienestar">Bienestar</a>
+<a href="#orientacion">Orientación</a>
 </nav>
 
 <header>
 <h1>PLATAFORMA CALMA</h1>
-<p>Modelo predictivo interdisciplinario basado en IA para la prevención del burnout académico.</p>
+<p>Promoción del bienestar académico y prevención primaria del burnout universitario.</p>
 </header>
 
 <section>
-<h2>¿Qué es CALMA?</h2>
+<h2>Enfoque Preventivo</h2>
 <div class="card">
-CALMA es una plataforma científica diseñada para identificar factores de riesgo tempranos asociados al burnout académico,
-integrando variables psicológicas y académicas mediante modelos predictivos.
+<ul>
+<li>✔ Promueve hábitos saludables</li>
+<li>✔ Fortalece recursos personales</li>
+<li>✔ Reduce factores de riesgo académicos</li>
+<li>✔ Aumenta conciencia temprana</li>
+<li>✔ Psicoeducación breve y accesible</li>
+</ul>
 </div>
 </section>
 
-<section id="evaluacion">
-<h2>Evaluación Predictiva</h2>
+<section id="autopercepcion">
+<h2>Autopercepción y Reflexión Guiada</h2>
+<div class="card">
+<p>La autopercepción permite reconocer señales tempranas de desgaste académico.</p>
+
+<ul>
+<li>• ¿Cómo me siento frente a mis responsabilidades académicas?</li>
+<li>• ¿Estoy gestionando adecuadamente mi tiempo?</li>
+<li>• ¿Estoy descansando lo suficiente?</li>
+<li>• ¿Percibo apoyo en mi entorno?</li>
+</ul>
+
+<div class="frase">
+“La conciencia temprana es el primer paso para la prevención.”
+</div>
+
+</div>
+</section>
+
+<section id="estrategias">
+<h2>Estrategias Académicas</h2>
+<div class="card">
+<h3>Organización del tiempo</h3>
+<ul>
+<li>Planificación semanal estructurada</li>
+<li>Definir 3 prioridades diarias</li>
+<li>Técnica 25/5 (Pomodoro)</li>
+</ul>
+
+<h3>Pausas activas</h3>
+<ul>
+<li>Descansos breves cada 90 minutos</li>
+<li>Movilidad corporal ligera</li>
+</ul>
+
+<h3>Higiene del sueño</h3>
+<ul>
+<li>7–8 horas de descanso</li>
+<li>Evitar pantallas antes de dormir</li>
+</ul>
+
+<h3>Manejo de carga académica</h3>
+<ul>
+<li>Distribución equilibrada de tareas</li>
+<li>Evitar acumulación de actividades</li>
+</ul>
+
+</div>
+</section>
+
+<section id="bienestar">
+<h2>Bienestar Académico</h2>
+<div class="card">
+<ul>
+<li>✔ Autoconocimiento continuo</li>
+<li>✔ Regulación emocional básica</li>
+<li>✔ Reconocimiento de límites personales</li>
+<li>✔ Fortalecimiento de recursos personales</li>
+</ul>
+
+<div class="frase">
+“El bienestar académico es un proceso dinámico y consciente.”
+</div>
+
+</div>
+</section>
+
+<section id="orientacion">
+<h2>Orientación y Derivación Responsable</h2>
 <div class="card">
 
-<label>Carga académica (1-10)</label>
-<input type="number" id="carga" min="1" max="10">
+<p>
+Si percibes señales persistentes de agotamiento, desmotivación intensa o dificultad para continuar con tus actividades académicas:
+</p>
 
-<label>Horas de sueño promedio</label>
-<input type="number" id="sueno" min="1" max="10">
+<div class="alerta">
+Te recomendamos buscar apoyo profesional en los servicios psicológicos de tu universidad o redes de apoyo institucional.
+</div>
 
-<label>Nivel de estrés percibido (1-10)</label>
-<input type="number" id="estres" min="1" max="10">
-
-<button onclick="calcularRiesgo()">Calcular Riesgo</button>
-
-<div id="resultado"></div>
+<p>
+Esta plataforma tiene carácter preventivo y educativo. No sustituye evaluación clínica profesional.
+</p>
 
 </div>
 </section>
 
 <footer>
-© 2026 Plataforma CALMA | Investigación doctoral
+© 2026 Plataforma CALMA | Investigación doctoral preventiva
 </footer>
-
-<script>
-function calcularRiesgo(){
-
-let carga = parseFloat(document.getElementById("carga").value);
-let sueno = parseFloat(document.getElementById("sueno").value);
-let estres = parseFloat(document.getElementById("estres").value);
-
-if([carga,sueno,estres].some(isNaN)){
-document.getElementById("resultado").innerHTML="Complete todos los campos.";
-return;
-}
-
-let score =
-(carga*0.4)+
-((10-sueno)*0.3)+
-(estres*0.3);
-
-let prob = Math.min(100, Math.round((score/10)*100));
-
-let nivel="";
-let clase="";
-let colorBarra="";
-
-if(score>=7){
-nivel="🔴 RIESGO ALTO";
-clase="alto";
-colorBarra="#e53935";
-}
-else if(score>=4){
-nivel="🟡 RIESGO MEDIO";
-clase="medio";
-colorBarra="#fb8c00";
-}
-else{
-nivel="🟢 RIESGO BAJO";
-clase="bajo";
-colorBarra="#43a047";
-}
-
-document.getElementById("resultado").innerHTML=
-`<div class="resultado-box ${clase}">
-${nivel}<br>
-Probabilidad estimada: ${prob}%
-<div class="barra">
-<div class="barra-interna" style="width:${prob}%; background:${colorBarra};"></div>
-</div>
-</div>`;
-}
-</script>
 
 </body>
 </html>
