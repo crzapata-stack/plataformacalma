@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Plataforma CALMA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
@@ -11,28 +12,49 @@
       background-color: #f4f7fb;
       color: #1f2d3d;
     }
+
+    nav {
+      background:#082f6b;
+      padding:15px;
+      text-align:center;
+      position:sticky;
+      top:0;
+    }
+
+    nav a {
+      color:white;
+      margin:0 15px;
+      text-decoration:none;
+      font-weight:bold;
+    }
+
     header {
       background-color: #0b3d91;
       color: white;
       padding: 40px 20px;
       text-align: center;
     }
+
     header h1 {
       margin: 0;
       font-size: 40px;
     }
+
     header p {
       font-size: 18px;
       margin-top: 10px;
     }
+
     section {
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
     }
+
     h2 {
       color: #0b3d91;
     }
+
     .card {
       background: white;
       padding: 20px;
@@ -40,6 +62,13 @@
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
+
+    .resultado {
+      font-size:18px;
+      font-weight:bold;
+      margin-top:15px;
+    }
+
     footer {
       background-color: #0b3d91;
       color: white;
@@ -47,34 +76,67 @@
       padding: 20px;
       margin-top: 40px;
     }
+
+    button {
+      background:#0b3d91;
+      color:white;
+      padding:10px 20px;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+      margin-top:10px;
+    }
+
+    input {
+      padding:8px;
+      margin:5px 0;
+      width:100%;
+      max-width:300px;
+    }
   </style>
 </head>
 
 <body>
 
+<nav>
+  <a href="#">Inicio</a>
+  <a href="#evaluacion">Evaluación</a>
+  <a href="#investigacion">Investigación</a>
+</nav>
+
 <header>
   <h1>PLATAFORMA CALMA</h1>
-  <p>Modelo predictivo interdisciplinario basado en Inteligencia Artificial para la prevención primaria del síndrome de burnout académico.</p>
+  <p>Modelo predictivo interdisciplinario basado en IA para la prevención del burnout académico.</p>
 </header>
 
 <section>
   <h2>¿Qué es CALMA?</h2>
   <div class="card">
-    <p>
-      CALMA es una plataforma digital científica diseñada para identificar factores de riesgo tempranos asociados al burnout académico,
-      integrando variables psicológicas, académicas y contextuales mediante modelos predictivos basados en IA.
-    </p>
+    CALMA es una plataforma científica diseñada para identificar factores de riesgo tempranos asociados al burnout académico,
+    integrando variables psicológicas y académicas mediante modelos predictivos.
   </div>
+</section>
 
-  <h2>Objetivo</h2>
+<section id="evaluacion">
+  <h2>Evaluación Predictiva</h2>
   <div class="card">
-    <p>
-      Desarrollar un sistema preventivo que permita la detección anticipada del riesgo de agotamiento académico,
-      facilitando intervenciones tempranas en contextos universitarios.
-    </p>
-  </div>
+    <label>Carga académica (1-10)</label><br>
+    <input type="number" id="carga" min="1" max="10"><br>
 
-  <h2>Líneas de trabajo</h2>
+    <label>Horas de sueño promedio</label><br>
+    <input type="number" id="sueno" min="1" max="10"><br>
+
+    <label>Nivel de estrés percibido (1-10)</label><br>
+    <input type="number" id="estres" min="1" max="10"><br>
+
+    <button onclick="calcularRiesgo()">Calcular Riesgo</button>
+
+    <div class="resultado" id="resultado"></div>
+  </div>
+</section>
+
+<section id="investigacion">
+  <h2>Líneas de Investigación</h2>
   <div class="card">
     <ul>
       <li>Análisis predictivo basado en datos académicos</li>
@@ -89,13 +151,35 @@
   © 2026 Plataforma CALMA | Investigación doctoral
 </footer>
 
+<script>
+function calcularRiesgo(){
+
+    let carga = parseFloat(document.getElementById("carga").value);
+    let sueno = parseFloat(document.getElementById("sueno").value);
+    let estres = parseFloat(document.getElementById("estres").value);
+
+    if(isNaN(carga) || isNaN(sueno) || isNaN(estres)){
+        document.getElementById("resultado").innerHTML = "Complete todos los campos.";
+        return;
+    }
+
+    let score = (carga * 0.4) +
+                ((10 - sueno) * 0.3) +
+                (estres * 0.3);
+
+    let mensaje = "";
+
+    if(score >= 7){
+        mensaje = "RIESGO ALTO de Burnout Académico";
+    } else if(score >= 4){
+        mensaje = "RIESGO MEDIO de Burnout Académico";
+    } else {
+        mensaje = "RIESGO BAJO de Burnout Académico";
+    }
+
+    document.getElementById("resultado").innerHTML = mensaje;
+}
+</script>
+
 </body>
-  <nav style="background:#082f6b; padding:15px; text-align:center;">
-  <a href="#" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Inicio</a>
-  <a href="#guias" style="color:white; margin:0 15px; text-decoration:none;">Guías</a>
-  <a href="#ejercicios" style="color:white; margin:0 15px; text-decoration:none;">Ejercicios</a>
-  <a href="#organizacion" style="color:white; margin:0 15px; text-decoration:none;">Organización</a>
-  <a href="#recursos" style="color:white; margin:0 15px; text-decoration:none;">Recursos</a>
-  <a href="#investigacion" style="color:white; margin:0 15px; text-decoration:none;">Investigación</a>
-</nav>
 </html>
